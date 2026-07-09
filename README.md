@@ -1,6 +1,6 @@
 # Konverter Satuan & Mata Uang dengan Haskell
 
-Program Konverter Satuan & Mata Uang berbasis CLI (Command Line Interface) ini dibuat menggunakan bahasa pemrograman fungsional **Haskell** murni tanpa library eksternal yang rumit. Program ini sangat cocok sebagai bahan pembelajaran bagi mahasiswa atau pemula yang baru mengenal konsep dasar pemrograman fungsional.
+Program Konverter Satuan & Mata Uang berbasis CLI (Command Line Interface) ini dibuat menggunakan bahasa pemrograman fungsional **Haskell** murni tanpa library eksternal yang rumit. 
 
 ## Fitur Utama
 
