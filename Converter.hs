@@ -150,23 +150,23 @@ convertTime asal tujuan nilai =
 -- ============================================================================
 
 -- Nilai tukar (kurs tetap) 1 unit Mata Uang ke Rupiah (IDR).
--- Kurs disesuaikan dengan nilai realistis/ketentuan umum.
+-- Data diperbarui: 8-9 Juli 2026 (sumber: BCA e-Rate & Bank Indonesia/Databoks, kurs tengah)
 kursKeIDR :: MataUang -> Double
 kursKeIDR IDR = 1.0
-kursKeIDR USD = 16300.0
-kursKeIDR EUR = 18900.0
-kursKeIDR GBP = 20800.0
-kursKeIDR JPY = 101.5       -- 1 Yen Jepang = Rp101,5
-kursKeIDR CNY = 2240.0      -- 1 Yuan China = Rp2.240
-kursKeIDR KRW = 11.8        -- 1 Won Korea = Rp11,8
-kursKeIDR SGD = 12700.0
-kursKeIDR MYR = 3450.0      -- 1 Ringgit Malaysia = Rp3.450
-kursKeIDR THB = 445.0       -- 1 Baht Thailand = Rp445
-kursKeIDR AUD = 10900.0     -- 1 Dollar Australia = Rp10.900
-kursKeIDR CAD = 11900.0     -- 1 Dollar Kanada = Rp11.900
-kursKeIDR CHF = 18200.0     -- 1 Franc Swiss = Rp18.200
-kursKeIDR INR = 195.0       -- 1 Rupee India = Rp195
-kursKeIDR SAR = 4350.0      -- 1 Riyal Arab Saudi = Rp4.350
+kursKeIDR USD = 18048.5
+kursKeIDR EUR = 19935.0
+kursKeIDR GBP = 22858.0
+kursKeIDR JPY = 108.38      -- 1 Yen Jepang = Rp108,38
+kursKeIDR CNY = 2460.0      -- 1 Yuan China = Rp2.460
+kursKeIDR KRW = 11.2        -- 1 Won Korea = Rp11,2
+kursKeIDR SGD = 13361.0
+kursKeIDR MYR = 4349.0      -- 1 Ringgit Malaysia = Rp4.349
+kursKeIDR THB = 544.0       -- 1 Baht Thailand = Rp544
+kursKeIDR AUD = 12003.0     -- 1 Dollar Australia = Rp12.003
+kursKeIDR CAD = 12349.0     -- 1 Dollar Kanada = Rp12.349
+kursKeIDR CHF = 21861.0     -- 1 Franc Swiss = Rp21.861
+kursKeIDR INR = 210.0       -- 1 Rupee India = Rp210 (estimasi dari kurs USD/INR)
+kursKeIDR SAR = 4504.0      -- 1 Riyal Arab Saudi = Rp4.504
 
 -- Konversi mata uang: ubah nilai dari mata uang 'asal' ke 'tujuan'
 -- Menggunakan alur: Asal -> IDR -> Tujuan
