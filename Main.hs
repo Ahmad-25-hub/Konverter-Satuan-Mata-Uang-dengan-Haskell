@@ -4,9 +4,6 @@ import System.IO (hFlush, stdout, hSetBuffering, BufferMode(LineBuffering))
 import Text.Read (readMaybe)
 import Converter
 
--- ============================================================================
--- HELPER FUNCTIONS FOR STRING AND INPUT VALIDATION
--- ============================================================================
 
 -- Fungsi helper untuk menghapus whitespace (spasi, tab, newline) di awal dan akhir String
 trim :: String -> String
@@ -16,8 +13,6 @@ trim = trimTail . trimHead
     trimTail = reverse . trimHead . reverse
 
 -- Fungsi untuk memformat tampilan Double agar lebih rapi.
--- Jika merupakan bilangan bulat, koma desimal (.0) akan dihilangkan.
--- Jika desimal, dibatasi maksimal 4 angka di belakang koma.
 formatDouble :: Double -> String
 formatDouble x
     | x == fromInteger (round x) = show (round x :: Integer)
@@ -41,11 +36,6 @@ validasiSuhu Kelvin x
     | x < 0     = Left "Suhu Kelvin tidak boleh di bawah 0 mutlak (0 K)!"
     | otherwise = Right x
 validasiSuhu _ x = Right x
-
-
--- ============================================================================
--- INTERAKSI INPUT & DISPLAY MENU SATUAN
--- ============================================================================
 
 -- Menampilkan daftar pilihan satuan beserta nomor indeksnya
 tampilkanSatuan :: Show a => [a] -> IO ()
@@ -106,10 +96,6 @@ tampilkanHasil nilaiAsal satuanAsal nilaiTujuan satuanTujuan = do
     putStrLn $ nilaiTujuan ++ " " ++ satuanTujuan
     putStrLn "=====================================\n"
 
-
--- ============================================================================
--- KATEGORI SUB-MENU KONVERSI
--- ============================================================================
 
 -- 1. Menu Konversi Panjang
 konversiPanjangMenu :: IO ()
@@ -227,10 +213,6 @@ konversiMataUangMenu = do
                             let hasil = convertCurrency asal tujuan nilai
                             tampilkanHasil (formatDouble nilai) (show asal) (formatDouble hasil) (show tujuan)
 
-
--- ============================================================================
--- MAIN LOOP DENGAN REKURSI
--- ============================================================================
 
 -- Menu utama program
 mainMenu :: IO ()

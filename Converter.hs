@@ -16,9 +16,7 @@ module Converter (
     convertCurrency
 ) where
 
--- ============================================================================
--- 1. DEFINISI TIPE DATA (ADTs) & LIST DAFTAR SATUAN
--- ============================================================================
+
 
 -- Tipe data untuk satuan Panjang
 data SatuanPanjang = Meter | Kilometer | Centimeter | Millimeter | Inch | Foot | Yard | Mile
@@ -71,12 +69,7 @@ daftarMataUang :: [MataUang]
 daftarMataUang = [minBound .. maxBound]
 
 
--- ============================================================================
--- 2. FUNGSI LOGIKA KONVERSI SATUAN
--- ============================================================================
-
 -- A. Konversi Panjang (Menggunakan basis Meter)
--- Mengembalikan faktor perkalian dari satuan tertentu ke Meter.
 faktorPanjangKeMeter :: SatuanPanjang -> Double
 faktorPanjangKeMeter Meter      = 1.0
 faktorPanjangKeMeter Kilometer  = 1000.0
@@ -95,7 +88,6 @@ convertLength asal tujuan nilai =
 
 
 -- B. Konversi Berat (Menggunakan basis Gram)
--- Mengembalikan faktor perkalian dari satuan tertentu ke Gram.
 faktorBeratKeGram :: SatuanBerat -> Double
 faktorBeratKeGram Kilogram  = 1000.0
 faktorBeratKeGram Gram      = 1.0
@@ -131,7 +123,6 @@ convertTemperature asal tujuan nilai =
 
 
 -- D. Konversi Waktu (Menggunakan basis Detik)
--- Mengembalikan faktor perkalian dari satuan tertentu ke Detik.
 faktorWaktuKeDetik :: SatuanWaktu -> Double
 faktorWaktuKeDetik Detik = 1.0
 faktorWaktuKeDetik Menit = 60.0
@@ -144,32 +135,25 @@ convertTime asal tujuan nilai =
     let nilaiDalamDetik = nilai * faktorWaktuKeDetik asal
     in nilaiDalamDetik / faktorWaktuKeDetik tujuan
 
-
--- ============================================================================
--- 3. FUNGSI LOGIKA KONVERSI MATA UANG
--- ============================================================================
-
 -- Nilai tukar (kurs tetap) 1 unit Mata Uang ke Rupiah (IDR).
--- Data diperbarui: 8-9 Juli 2026 (sumber: BCA e-Rate & Bank Indonesia/Databoks, kurs tengah)
 kursKeIDR :: MataUang -> Double
 kursKeIDR IDR = 1.0
 kursKeIDR USD = 18048.5
 kursKeIDR EUR = 19935.0
 kursKeIDR GBP = 22858.0
-kursKeIDR JPY = 108.38      -- 1 Yen Jepang = Rp108,38
-kursKeIDR CNY = 2460.0      -- 1 Yuan China = Rp2.460
-kursKeIDR KRW = 11.2        -- 1 Won Korea = Rp11,2
+kursKeIDR JPY = 108.38     
+kursKeIDR CNY = 2460.0      
+kursKeIDR KRW = 11.2       
 kursKeIDR SGD = 13361.0
-kursKeIDR MYR = 4349.0      -- 1 Ringgit Malaysia = Rp4.349
-kursKeIDR THB = 544.0       -- 1 Baht Thailand = Rp544
-kursKeIDR AUD = 12003.0     -- 1 Dollar Australia = Rp12.003
-kursKeIDR CAD = 12349.0     -- 1 Dollar Kanada = Rp12.349
-kursKeIDR CHF = 21861.0     -- 1 Franc Swiss = Rp21.861
-kursKeIDR INR = 210.0       -- 1 Rupee India = Rp210 (estimasi dari kurs USD/INR)
-kursKeIDR SAR = 4504.0      -- 1 Riyal Arab Saudi = Rp4.504
+kursKeIDR MYR = 4349.0      
+kursKeIDR THB = 544.0      
+kursKeIDR AUD = 12003.0    
+kursKeIDR CAD = 12349.0     
+kursKeIDR CHF = 21861.0     
+kursKeIDR INR = 210.0       
+kursKeIDR SAR = 4504.0      
 
 -- Konversi mata uang: ubah nilai dari mata uang 'asal' ke 'tujuan'
--- Menggunakan alur: Asal -> IDR -> Tujuan
 convertCurrency :: MataUang -> MataUang -> Double -> Double
 convertCurrency asal tujuan nilai =
     let nilaiDalamIDR = nilai * kursKeIDR asal
